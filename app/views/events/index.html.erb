@@ -1,6 +1,6 @@
 <h2>Danh sách hoạt động của clb</h2>
 <ul>
   <% @events.each do |event| %>
-    <li><%= event.title %></li>
+    <li><%= event.title %> | <%= event.start_time&.strftime('%D %T') %> ~ <%= event.end_time&.strftime('%D %T') %></li>
   <% end %>
 </ul>

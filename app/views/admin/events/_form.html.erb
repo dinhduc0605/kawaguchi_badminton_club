@@ -1,0 +1,19 @@
+<%= form_with model: [:admin, @event] do |form| %>
+  <div>
+    <%= form.text_field :title, placeholder: 'Tiêu đề' %>
+  </div>
+  <div>
+    <%= form.text_area :note, placeholder: 'Ghi chú' %>
+  </div>
+  <div>
+    Thời gian bắt đầu
+    <%= form.datetime_select :start_time %>
+  </div>
+  <div>
+    Thời gian kết thúc
+    <%= form.datetime_select :end_time %>
+  </div>
+  <div>
+    <%= form.submit 'OK' %>
+  </div>
+<% end %>
