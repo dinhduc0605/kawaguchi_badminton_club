@@ -1,10 +1,8 @@
 <h2>Danh sách hoạt động của clb</h2>
 <%= link_to 'Thêm mới', new_admin_event_url %>
-<div>
-  <% @events.each do |event| %>
-    <div>
-      <%= event.title %> | <%= event.start_time&.strftime('%D %T') %> ~ <%= event.end_time&.strftime('%D %T') %>
-      <%= link_to 'Sửa', edit_admin_event_url(event) %>
-    </div>
-  <% end %>
-</div>
+<% @events.each do |event| %>
+  <div>
+    <%= event.title %> | <%= event.start_time&.strftime('%D %T') %> ~ <%= event.end_time&.strftime('%D %T') %>
+    <%= link_to 'Sửa', edit_admin_event_url(event) %>
+  </div>
+<% end %>

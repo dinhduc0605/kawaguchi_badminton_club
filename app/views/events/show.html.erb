@@ -1,0 +1,12 @@
+<h1>Danh sách người tham gia</h1>
+<%= link_to 'Thêm mới', new_participant_url(event_id: @event.id) %>
+<% @participants.each do |participant| %>
+  <div>
+    <%= participant.name %>
+    <%= link_to 'Sửa', edit_participant_url(participant) %>
+    <%= link_to 'Xoá', participant_url(participant), data: {
+                  turbo_method: :delete,
+                  turbo_confirm: 'Bạn có chắc chắn muốn xoá không?'
+                } %>
+  </div>
+<% end %>

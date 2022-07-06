@@ -1,0 +1,5 @@
+<%= form_with model: @participant do |form| %>
+  <%= form.hidden_field :event_id, value: params[:event_id] || @participant.event_id %>
+  <%= form.text_field :name, placeholder: 'Tên' %>
+  <%= form.submit 'OK' %>
+<% end %>
