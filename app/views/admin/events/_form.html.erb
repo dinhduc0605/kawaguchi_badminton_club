@@ -1,18 +1,19 @@
+<%= link_to 'Trở về', :back %>
 <%= form_with model: [:admin, @event] do |form| %>
   <div>
-    <%= form.text_field :title, placeholder: 'Tiêu đề' %>
+    <%= form.text_field :title, placeholder: 'Tiêu đề', required: true %>
+  </div>
+  <div>
+    <%= form.text_field :place, placeholder: 'Địa điểm', required: true %>
   </div>
   <div>
     <%= form.text_area :note, placeholder: 'Ghi chú' %>
   </div>
   <div>
-    Thời gian bắt đầu
-    <%= form.datetime_select :start_time %>
+    <p>Thời gian</p>
+    <%= form.date_field :open_date, required: true %> | <%= form.time_field :start_time, required: true %> ~ <%= form.time_field :end_time, required: true %>
   </div>
-  <div>
-    Thời gian kết thúc
-    <%= form.datetime_select :end_time %>
-  </div>
+  <br>
   <div>
     <%= form.submit 'OK' %>
   </div>

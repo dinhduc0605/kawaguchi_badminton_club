@@ -1,8 +1,8 @@
-<h2>Danh sách hoạt động của clb</h2>
+<h1>Danh sách hoạt động của clb</h1>
 <%= link_to 'Thêm mới', new_admin_event_url %>
 <% @events.each do |event| %>
   <div>
-    <%= event.title %> | <%= event.start_time&.strftime('%D %T') %> ~ <%= event.end_time&.strftime('%D %T') %>
+    <%= "#{event.title} | #{event.place} | #{event.open_date} #{event.start_time.strftime('%H:%M')} ~ #{event.end_time.strftime('%H:%M')}" %>
     <%= link_to 'Sửa', edit_admin_event_url(event) %>
   </div>
 <% end %>

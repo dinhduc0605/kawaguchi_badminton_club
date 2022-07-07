@@ -1,8 +1,8 @@
-<h2>Danh sách hoạt động của clb</h2>
+<h1>Danh sách hoạt động của clb</h1>
 <ul>
   <% @events.each do |event| %>
     <li>
-      <%= link_to "#{event.title} | #{event.start_time&.strftime('%D %T')} ~ #{event.end_time&.strftime('%D %T')}", event %>
+      <%= link_to "#{event.title} | #{event.place} | #{event.open_date} #{event.start_time.strftime('%H:%M')} ~ #{event.end_time.strftime('%H:%M')}", event %>
     </li>
   <% end %>
 </ul>

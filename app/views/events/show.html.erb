@@ -1,12 +1,14 @@
 <h1>Danh sách người tham gia</h1>
 <%= link_to 'Thêm mới', new_participant_url(event_id: @event.id) %>
-<% @participants.each do |participant| %>
+<% @participants.each.with_index(1) do |participant, index| %>
   <div>
-    <%= participant.name %>
-    <%= link_to 'Sửa', edit_participant_url(participant) %>
-    <%= link_to 'Xoá', participant_url(participant), data: {
-                  turbo_method: :delete,
-                  turbo_confirm: 'Bạn có chắc chắn muốn xoá không?'
-                } %>
+    <%= "#{index}. #{participant.name}" %>
+    <span class='action-btn'>
+      <%= link_to 'Sửa', edit_participant_url(participant) %>
+      <%= link_to 'Xoá', participant_url(participant), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: 'Bạn có chắc chắn muốn xoá không?'
+                  } %>
+    </span>
   </div>
 <% end %>
