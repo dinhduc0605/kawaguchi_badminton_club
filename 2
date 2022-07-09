@@ -1,0 +1,106 @@
+change event edit page design
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is ahead of 'origin/main' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	modified:   app/assets/stylesheets/application.scss
+#	modified:   app/views/admin/events/_form.html.erb
+#	modified:   app/views/layouts/application.html.erb
+#
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+diff --git a/app/assets/stylesheets/application.scss b/app/assets/stylesheets/application.scss
+index a4705dc..acc6164 100644
+--- a/app/assets/stylesheets/application.scss
++++ b/app/assets/stylesheets/application.scss
+@@ -14,3 +14,7 @@
+  *= require_self
+  */
+ @import "bootstrap";
++
++body {
++  padding: 1rem;
++}
+diff --git a/app/views/admin/events/_form.html.erb b/app/views/admin/events/_form.html.erb
+index cba15b1..5d5f3c7 100644
+--- a/app/views/admin/events/_form.html.erb
++++ b/app/views/admin/events/_form.html.erb
+@@ -1,22 +1,37 @@
+-<%= link_to 'Trở về', :back %>
++<%= link_to "Trở về", :back %>
+ <%= form_with model: [:admin, @event] do |form| %>
+-  <div class='mb-3'>
+-    <%= form.label :title, 'Tiêu đề', class: 'form-label' %>
+-    <%= form.text_field :title, class: 'form-control', required: true %>
++  <div class="mb-3">
++    <%= form.label :title, "Tiêu đề", class: "form-label" %>
++    <%= form.text_field :title, class: "form-control", required: true %>
+   </div>
+-  <div class='mb-3'>
+-    <%= form.label :place, 'Địa chỉ', class: 'form-label' %>
+-    <%= form.text_field :place, class: 'form-control', required: true %>
++  <div class="mb-3">
++    <%= form.label :place, "Địa chỉ", class: "form-label" %>
++    <%= form.text_field :place, class: "form-control", required: true %>
++  </div class="mb-3">
++  <div class="mb-3">
++    <%= form.label :note, "Ghi chú", class: "form-label" %>
++    <%= form.text_area :note, rows: 3, class: "form-control" %>
+   </div>
+-  <div>
+-    <%= form.text_area :note, placeholder: 'Ghi chú' %>
++  <div class="mb-3 row">
++    <div class="col-md-12">
++      <%= form.label :open_date, "Thời gian", class: "form-label" %>
++    </div>
++    <div class="mb-3 col-md-6">
++      <%= form.date_field :open_date, class: "form-control", required: true %>
++    </div>
++    <div class="mb-3 col-md-3">
++      <%= form.time_field :start_time, class: "form-control", required: true %>
++    </div>
++    <div class="mb-3 col-md-3">
++      <%= form.time_field :end_time, class: "form-control", required: true %>
++    </div>
+   </div>
+-  <div>
+-    <p>Thời gian</p>
+-    <%= form.date_field :open_date, required: true %> | <%= form.time_field :start_time, required: true %> ~ <%= form.time_field :end_time, required: true %>
+-  </div>
+-  <br>
+-  <div>
+-    <%= form.submit 'OK' %>
++  <div class="row">
++    <div class="col-md-6">
++    <%= form.submit "OK", class: "btn btn-outline-primary form-control col-md-6" %>
++    </div>
++    <div class="col-md-6">
++    <%= link_to "Huỷ", :back, class: "btn btn-outline-danger form-control col-md-6" %>
++    </div>
+   </div>
+ <% end %>
+diff --git a/app/views/layouts/application.html.erb b/app/views/layouts/application.html.erb
+index 3167394..29602ce 100644
+--- a/app/views/layouts/application.html.erb
++++ b/app/views/layouts/application.html.erb
+@@ -10,8 +10,12 @@
+     <%= javascript_importmap_tags %>
+   </head>
+ 
+-  <body>
+-    <%= link_to 'Trang chủ', root_url %>
+-    <%= yield %>
++  <body class="container">
++    <div class="row justify-content-md-center">
++      <div class='col-md-6'>
++        <%= link_to 'Trang chủ', root_url %>
++        <%= yield %>
++      </div>
++    </div>
+   </body>
+ </html>
