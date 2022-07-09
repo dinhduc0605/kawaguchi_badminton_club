@@ -1,10 +1,12 @@
 <%= link_to 'Trở về', :back %>
 <%= form_with model: [:admin, @event] do |form| %>
-  <div>
-    <%= form.text_field :title, placeholder: 'Tiêu đề', required: true %>
+  <div class='mb-3'>
+    <%= form.label :title, 'Tiêu đề', class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control', required: true %>
   </div>
-  <div>
-    <%= form.text_field :place, placeholder: 'Địa điểm', required: true %>
+  <div class='mb-3'>
+    <%= form.label :place, 'Địa chỉ', class: 'form-label' %>
+    <%= form.text_field :place, class: 'form-control', required: true %>
   </div>
   <div>
     <%= form.text_area :note, placeholder: 'Ghi chú' %>
