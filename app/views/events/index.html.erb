@@ -10,7 +10,10 @@
           <i class="bi bi-box-arrow-up-right"></i>
         <% end %>
       </h6>
-      <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-calendar-event"></i><%= "#{event.open_date} #{event.start_time.strftime('%H:%M')} ~ #{event.end_time.strftime('%H:%M')}" %></h6>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <i class="bi bi-calendar-event"></i>
+        <%= "#{event.open_date} (#{I18n.l(event.open_date, format: '%a')}) #{event.start_time.strftime('%H:%M')} ~ #{event.end_time.strftime('%H:%M')}" %>
+      </h6>
       <p class="card-text"><%= event.note %></p>
       <%= link_to 'Chi tiết', event, class: 'card-link' %>
       <%= link_to 'Đăng ký', new_participant_url(event_id: event.id), class: 'card-link' %>
