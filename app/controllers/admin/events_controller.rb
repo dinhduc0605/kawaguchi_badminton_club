@@ -22,7 +22,6 @@ class Admin::EventsController < ApplicationController
     event.update!(event_params)
 
     redirect_to admin_events_path
-    
   end
 
   def event_params

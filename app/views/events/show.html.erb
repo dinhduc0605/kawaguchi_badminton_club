@@ -10,14 +10,22 @@
     <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-calendar-event"></i><%= "#{@event.open_date} #{@event.start_time.strftime('%H:%M')} ~ #{@event.end_time.strftime('%H:%M')}" %></h6>
     <p class="card-text"><%= @event.note %></p>
   </div>
+<div class="row m-1 mb-3">
+  <div class="col-6">
+    <%= link_to 'Sửa', edit_event_url(@event), class: 'btn btn-outline-warning col-12' %>
+  </div>
+  <div class="col-6">
+    <%= link_to 'Xoá', event_url(@event), data: {
+      turbo_method: :delete,
+      turbo_confirm: 'Bạn có chắc chắn muốn xoá không?'
+    }, class: 'btn btn-outline-danger col-12' %>
+  </div>
+</div>
 </div>
 <h5 class="mb-3">Danh sách người tham gia</h5>
 <div class="row mb-3">
-  <div class="col-6">
+  <div class="col-12">
     <%= link_to 'Đăng ký', new_participant_url(event_id: @event.id), class: 'btn btn-outline-success col-12' %>
-  </div>
-  <div class="col-6">
-    <%= link_to 'Trở về', root_url, class: 'btn btn-outline-danger col-12' %>
   </div>
 </div>
 <% @participants.each.with_index(1) do |participant, index| %>

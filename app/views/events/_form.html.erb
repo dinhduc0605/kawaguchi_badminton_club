@@ -1,0 +1,36 @@
+<%= form_with model: @event do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, "Tiêu đề", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", required: true %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :place, "Địa chỉ", class: "form-label" %>
+    <%= form.text_field :place, class: "form-control", required: true %>
+  </div class="mb-3">
+  <div class="mb-3">
+    <%= form.label :note, "Ghi chú", class: "form-label" %>
+    <%= form.text_area :note, rows: 3, class: "form-control" %>
+  </div>
+  <div class="mb-3 row">
+    <div class="col-md-12">
+      <%= form.label :open_date, "Thời gian", class: "form-label" %>
+    </div>
+    <div class="mb-3 col-md-6">
+      <%= form.date_field :open_date, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3 col-md-3">
+      <%= form.time_field :start_time, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3 col-md-3">
+      <%= form.time_field :end_time, class: "form-control", required: true %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= form.submit "OK", class: "btn btn-outline-success form-control col-md-6" %>
+    </div>
+    <div class="col-6">
+      <%= link_to "Huỷ", :back, class: "btn btn-outline-danger form-control col-md-6" %>
+    </div>
+  </div>
+<% end %>

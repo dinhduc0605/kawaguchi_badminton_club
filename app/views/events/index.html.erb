@@ -1,4 +1,5 @@
 <h1>DANH SÁCH HOẠT ĐỘNG CỦA CLB</h1>
+<%= link_to 'Thêm hoạt động', new_event_url, class: 'btn btn-outline-success mb-3 col-12' %>
 <% @events.each do |event| %>
   <div class="event-item card mb-3">
     <div class="card-body">
@@ -13,6 +14,7 @@
       <p class="card-text"><%= event.note %></p>
       <%= link_to 'Chi tiết', event, class: 'card-link' %>
       <%= link_to 'Đăng ký', new_participant_url(event_id: event.id), class: 'card-link' %>
+      <%= link_to 'Sửa', edit_event_url(event), class: 'card-link' %>
     </div>
   </div>
 <% end %>
