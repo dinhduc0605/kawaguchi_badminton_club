@@ -8,4 +8,13 @@
 }
 .action-btn {
   float: right;
+  .btn {
+    text-decoration: none;
+    &-edit {
+      color: #fdb30d;
+    }
+    &-destroy {
+      color: #ff4242;
+    }
+  }
 }

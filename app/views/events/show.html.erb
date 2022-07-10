@@ -1,14 +1,38 @@
-<h1>Danh sách người tham gia</h1>
-<%= link_to 'Thêm mới', new_participant_url(event_id: @event.id) %>
+<div class="event-item card mb-5">
+  <div class="card-body">
+    <h5 class="card-title"><%= @event.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted event-item-place">
+      <i class="bi bi-map"></i><%= @event.place %>
+    <%= link_to "https://www.google.com/maps/search/?api=1&query=#{@event.place}", target: '_blank' do %>
+      <i class="bi bi-box-arrow-up-right"></i>
+    <% end %>
+    </h6>
+    <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-calendar-event"></i><%= "#{@event.open_date} #{@event.start_time.strftime('%H:%M')} ~ #{@event.end_time.strftime('%H:%M')}" %></h6>
+    <p class="card-text"><%= @event.note %></p>
+  </div>
+</div>
+<h5 class="mb-3">Danh sách người tham gia</h5>
+<div class="row mb-3">
+  <div class="col-6">
+    <%= link_to 'Trở về', :back, class: 'btn btn-outline-danger col-12' %>
+  </div>
+  <div class="col-6">
+    <%= link_to 'Đăng ký', new_participant_url(event_id: @event.id), class: 'btn btn-outline-success col-12' %>
+  </div>
+</div>
 <% @participants.each.with_index(1) do |participant, index| %>
   <div>
     <%= "#{index}. #{participant.name}" %>
     <span class='action-btn'>
-      <%= link_to 'Sửa', edit_participant_url(participant) %>
-      <%= link_to 'Xoá', participant_url(participant), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: 'Bạn có chắc chắn muốn xoá không?'
-                  } %>
+      <%= link_to edit_participant_url(participant), class: 'btn-edit' do %>
+        <i class="bi bi-pencil-square"></i>
+      <% end %>
+      <%= link_to participant_url(participant), data: {
+        turbo_method: :delete,
+        turbo_confirm: 'Bạn có chắc chắn muốn xoá không?'
+      }, class: 'btn-destroy' do %>
+        <i class="bi bi-trash"></i>
+      <% end %>
     </span>
   </div>
 <% end %>
