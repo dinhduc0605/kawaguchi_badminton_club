@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all.order(:id)
+    @events = Event.active.order(:open_date)
   end
 
   def create
