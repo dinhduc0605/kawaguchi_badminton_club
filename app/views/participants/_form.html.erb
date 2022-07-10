@@ -1,6 +1,13 @@
-<%= link_to 'Trở về', :back %>
 <%= form_with model: @participant do |form| %>
   <%= form.hidden_field :event_id, value: params[:event_id] || @participant.event_id %>
-  <%= form.text_field :name, placeholder: 'Tên' %>
-  <%= form.submit 'OK' %>
+  <%= form.label :name, 'Họ Tên', class: 'form-label' %>
+  <%= form.text_field :name, class: 'form-control mb-3' %>
+  <div class="row">
+    <div class="col-6">
+      <%= form.submit "OK", class: "btn btn-outline-success form-control col-md-6" %>
+    </div>
+    <div class="col-6">
+      <%= link_to "Huỷ", :back, class: "btn btn-outline-danger form-control col-md-6" %>
+    </div>
+  </div>
 <% end %>
